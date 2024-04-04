@@ -1,4 +1,4 @@
-
+// Function to load list items from local storage
 function loadListItems() {
     let savedItems = localStorage.getItem('todoList');
     if (savedItems) {
@@ -11,50 +11,49 @@ window.addEventListener('load', loadListItems);
 
 // Function to save list items to local storage
 function saveListItems() {
-    let list = document.getElementById('list').innerHTML;
-    localStorage.setItem('todoList', list);
+    let listItemsHTML = document.getElementById('list').innerHTML;
+    localStorage.setItem('todoList', listItemsHTML);
 }
-let toDo = ()=>{
-    let val=document.getElementById('listItems').value;
-    if(!val){
-        alert('enter a value')
-    }
-    else{
-        let list_item=document.createElement('p');
-        let li_item_p=document.createTextNode(val);
-        list_item.appendChild(li_item_p);
-        let item=document.createElement('div');
-        item.appendChild(list_item);
-        let icon=document.createElement('i');
+
+const val = document.getElementById('listItems');
+const list = document.getElementById('list');
+
+let toDo = () => {
+    if (val.value === '') {
+        alert('Please enter a value');
+    } else {
+        let listItem = document.createElement('p');
+        listItem.textContent = val.value;
+        
+        let item = document.createElement('div');
+        item.appendChild(listItem);
+
+        let icon = document.createElement('i');
+        icon.className = 'fa fa-trash';
         item.appendChild(icon);
 
-        let list=document.getElementById('list');
         list.appendChild(item);
 
-        list_item.className='list-item';
-        icon.className='fa fa-trash';
-        item.className='item';
-        // icon.addEventListener('click',()=>{
-        //     item.remove()
-        // })
-        document.getElementById('listItems').value=''
-
-        item.addEventListener('click',(e)=>{
-            if(e.target.tagName === 'P'){
-                e.target.classList.add("checked");
-            }
-            else if(e.target.tagName === 'I'){
-                e.target.parentElement.remove();
-            }
-            saveListItems();
-        },false);
-        saveListItems();
+        listItem.className = 'list-item';
+        icon.className = 'fa fa-trash';
+        item.className = 'item';
     }
-    
+    val.value = '';
+    saveListItems(); // Save list items after adding a new one
 }
-document.getElementById('listItems').addEventListener('keydown', (e) => {
+
+list.addEventListener('click', (e) => {
+    if (e.target.tagName === 'P') {
+        e.target.classList.toggle("checked");
+        saveListItems(); // Save list items after checking/unchecking
+    } else if (e.target.tagName === 'I') {
+        e.target.parentElement.remove();
+        saveListItems(); // Save list items after removing an item
+    }
+});
+
+val.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-        console.log('Enter key pressed');
         toDo();
     }
 });
