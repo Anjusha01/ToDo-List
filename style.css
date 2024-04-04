@@ -1,0 +1,126 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(190deg,#4c4cd8 50%, #fa8989 50%);
+    padding: 4vw;
+}
+.c-container{
+    width: 50%;
+    margin: auto;
+    padding-top: 2vh;
+    background-color: aliceblue;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 2px rgb(58, 48, 48);
+}
+.row-1 h3{
+    color: #4c4cd8;
+    /* margin-bottom: 20px; */
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    
+
+}
+.row-1 img{
+    width: 40px;
+}
+.addItem{
+    display: flex;
+    justify-content: space-between;
+    /* width: 100%; */
+    border-radius: 25px;
+    background-color: #fa898944;
+    transition: transform 0.3s ease;
+    margin-bottom: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.addItem input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: calc(100% - 70px);
+    padding: 15px;
+    padding-left: 5%;
+}
+.addItem:hover input[type="text"] {
+    transform: scale(1.1);
+    margin-left: 5%;
+}
+
+.add{
+    background-color: #4c4cd8;
+    border-radius: 25px;
+    padding: 10px 15px 10px 15px;
+    border: none;
+    font-weight: 800;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    cursor: pointer;
+}
+.add:hover{
+    transform: scale(1.1);
+    /* font-size: large; */
+
+}
+#list{
+    padding-bottom: 50px;
+}
+.list-item{
+    display: flex;
+    align-items: center;
+    font-size: large;
+    width: 100%;
+    /* padding: 20px 20px 10px 35px; */
+    font-weight: 400;
+    /* box-shadow: 0 2px 5px -5px rgb(58, 48, 48); */
+    position: relative;
+    padding-left: 35px;
+    
+}
+.list-item::before{
+    content: '';
+    position: absolute;
+    height: 20px;
+    width:20px;
+    background-image: url(images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    left:8px;
+}
+.list-item.checked{
+    color:#fa898971;
+    text-decoration: line-through;
+}
+.list-item.checked::before{
+    content: '';
+    position: absolute;
+    height: 20px;
+    width:20px;
+    background-image: url(images/checked.png);
+    background-size: cover;
+    background-position: center;
+    left:8px;
+    
+}
+
+.item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px ;
+    box-shadow: 0 2px 5px -5px rgb(58, 48, 48);
+    padding: 20px 20px 20px 20px;
+}
+.item:hover{
+    cursor: pointer;
+}
+.item i:hover{
+    transform: scale(1.3);
+}
